@@ -5,20 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhgoncal <jhgoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 12:28:09 by jhgoncal          #+#    #+#             */
-/*   Updated: 2022/04/18 12:28:09 by jhgoncal         ###   ########lyon.fr   */
+/*   Created: 2022/04/16 12:28:09 by jhgoncal          #+#    #+#             */
+/*   Updated: 2022/04/16 12:28:09 by jhgoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** Init A with the list.
 ** Init B as empty.
-** Check if the data is sorted(return error if isn't).
+** Check if the data is sorted.
 ** The first argument must be the head of the list
-
+** Only numbers are allowed
 ** the program must work with only two arguments. Ex:
 $>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
 6
+** The first argument should be at the top of the stack.
+
+Errors:
+some arguments aren’t integers, some arguments are
+bigger than an integer and/or there are duplicates.
+
 */
 
 #include <string.h>
@@ -43,7 +49,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	printlist(t_list *head);
 t_list	*ft_lstlast(t_list *lst);
 t_list *ft_lstnew(void *content);
-t_list ft_lstadd_front(t_list **head, t_list *new);
+t_list	ft_lstadd_front(t_list **head, t_list *new);
 
 int main(int ac, char **av)
 {
@@ -60,20 +66,31 @@ int main(int ac, char **av)
 	_atoi = 0;
 	if (ac < 2)
         return (0);
+	//the program must work with two arguments. (line 20)
 	if (ac == 2)
 		av = ft_split(av[1], ' ');
 	else 
 		i = 0;
+	//init stack A
 	while (av[++i])
 	{
-		//init stack A
+		/*Check if the data is bigger than MAX_INT*/
+		
+		//passing arguments to integers
 		_atoi = ft_atoi(av[i]);
+		
+		//if its not digit the program must return Error
 		if (!ft_is_digit(av[i]))
 			return (write(1, "Error", 5));
+		
 		node = ft_lstnew((long int *)_atoi);
 		ft_lstadd_back(&stack_a, node);
 	}
+	/*check if the list is sorted
+	and if there are duplicates*/
+	
 	printlist(stack_a);
+	return (0);
 }
 
 int	ft_is_digit(char *str)
@@ -187,7 +204,7 @@ int	ft_atoi(const char *str)
 		result = result * 10 + *str - '0';
 		str++;
 		if (result >= 2147483647)
-				return (0);
+			return (0);
 	}
 	return (result * sign);
 }
