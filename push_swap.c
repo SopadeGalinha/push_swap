@@ -74,7 +74,7 @@ int main(int ac, char **av)
 	//init stack A
 	while (av[++i])
 	{
-		/*Check if the data is bigger than MAX_INT*/
+		/*Check if the data is bigger than MAX_INT(2147483647)*/
 		
 		//passing arguments to integers
 		_atoi = ft_atoi(av[i]);
@@ -203,7 +203,7 @@ int	ft_atoi(const char *str)
 	{
 		result = result * 10 + *str - '0';
 		str++;
-		if (result >= 2147483647)
+		if (result > 2147483647)
 			return (0);
 	}
 	return (result * sign);
