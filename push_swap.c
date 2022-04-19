@@ -50,6 +50,12 @@ void	printlist(t_list *head);
 t_list	*ft_lstlast(t_list *lst);
 t_list *ft_lstnew(void *content);
 t_list	ft_lstadd_front(t_list **head, t_list *new);
+int	ft_lstsize(t_list *lst);
+int	ft_isduplicate(t_list **lst, t_list *node);
+
+int	ft_is_sorted(t_list *node);
+
+
 
 int main(int ac, char **av)
 {
@@ -75,21 +81,57 @@ int main(int ac, char **av)
 	while (av[++i])
 	{
 		/*Check if the data is bigger than MAX_INT(2147483647)*/
-		
 		//passing arguments to integers
 		_atoi = ft_atoi(av[i]);
-		
-		//if its not digit the program must return Error
+		//if isn't digit the program must return Error
 		if (!ft_is_digit(av[i]))
 			return (write(1, "Error", 5));
 		
 		node = ft_lstnew((long int *)_atoi);
 		ft_lstadd_back(&stack_a, node);
+		if (ft_isduplicate(&stack_a, node))
+			return (write(1,"ErrorDup", 8));
 	}
-	/*check if the list is sorted
+	//if (ft_checklist(stack_a))
+	//	return (0);
+	/*check if the list is sorted,
 	and if there are duplicates*/
-	
+	printf("Size of the list: %d\n", ft_lstsize(stack_a));
+	node = stack_a;
 	printlist(stack_a);
+	return (0);
+}
+int	ft_isduplicate(t_list **lst, t_list *node)
+{
+	t_list *temporary;
+
+	temporary = *lst;
+	if (*lst == NULL)
+		return (0);
+	while (temporary->next != NULL)
+	{
+		if (temporary->content == node->content)
+			return (1);
+		temporary = temporary->next;
+	}
+	return (0);
+}
+
+int	ft_is_sorted(t_list *node)
+{
+	t_list	*temporary;
+	
+	int c = 0;
+	temporary = node;
+	while (temporary->next != NULL)
+	{
+		if (!(temporary > temporary->next))
+		{
+			c++;
+		}
+		temporary = temporary->next;
+	}
+	printf("The value of c is:%d\n", c);
 	return (0);
 }
 
@@ -263,4 +305,19 @@ t_list ft_lstadd_front(t_list **head, t_list *new)
 	new->next = *head;
 	*head = new;
 	return (*new);
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	int	i;
+
+	i = 0;
+	if (!(lst))
+		return (0);
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
