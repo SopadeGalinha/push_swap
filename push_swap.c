@@ -76,7 +76,7 @@ int main(int ac, char **av)
 		av = ft_split(av[1], ' ');
 	else 
 		i = 0;
-/*	while (av[++i])
+	while (av[++i])
 	{
 		//Check if the data is bigger than MAX_INT(2147483647)
 		_atoi = ft_atoi(av[i]);
@@ -92,11 +92,10 @@ int main(int ac, char **av)
 		return (write(1, "ErrorSorted", 11));
 	printf("Size of the list: %d\n", ft_lstsize(stack_a));
 	node = stack_a;
-*/
-	stack_a = ft_check_and_init(av, i);
 	printlist(stack_a);
 	return (0);
 }
+/*
 t_list	ft_check_and_init(char **av, int i)
 {
 	int			i;
@@ -128,7 +127,7 @@ t_list	ft_check_and_init(char **av, int i)
 	printlist(stack_a);
 	return (stack_a);
 }
-
+*/
 
 int	ft_is_sorted(t_list *lst)
 {
