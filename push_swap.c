@@ -15,14 +15,9 @@
 ** Init B as empty.
 ** Check if the data is sorted.
 ** The first argument must be the head of the list
-** Only numbers are allowed
 ** the program must work with only two arguments. Ex:
 $>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
 6
-Errors:
-some arguments aren’t integers, some arguments are
-bigger than an integer and/or there are duplicates.
-
 */
 
 #include <string.h>
@@ -37,23 +32,31 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
-t_list	*ft_lstnew(void *content);
 t_list	*ft_check_and_init(char **av, int i);
+/* This function will check errors and 
+** initialize Stack A.
+  ERRORS:
+** The arguments are not only numbers;
+** Argument bigger than MAX_INT; 
+** There are duplicates.
+** The list it's sorted
+*/
 
-void		ft_lstadd_back(t_list **lst, t_list *new);
-int			ft_lstsize(t_list *lst);
-char		**ft_split(char const *s, char c);
+//BACKUP FUNCTIONS
+t_list		*ft_lstnew(void *content);
 long int	ft_atoi_l(const char *str);
+char		**ft_split(char const *s, char c);
+void		ft_lstadd_back(t_list **lst, t_list *new);
 
 // JUST TO VISUALIZE WHAT I AM DOING.
 void	printlist(t_list *head);
+int		ft_lstsize(t_list *lst);
 
 //ERRORS CHECKERS.
 int		ft_isdigit(int c);
 int		ft_is_digit(char *str);
 int		ft_is_sorted(t_list *lst);
 int		ft_isduplicate(t_list **lst, t_list *node);
-
 
 int main(int ac, char **av)
 {
