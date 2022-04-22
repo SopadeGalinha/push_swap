@@ -19,8 +19,6 @@
 ** the program must work with only two arguments. Ex:
 $>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
 6
-** The first argument should be at the top of the stack.
-
 Errors:
 some arguments aren’t integers, some arguments are
 bigger than an integer and/or there are duplicates.
@@ -44,7 +42,6 @@ int		ft_is_digit(char *str);
 int		ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 
-
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	printlist(t_list *head);
 t_list	*ft_lstlast(t_list *lst);
@@ -52,8 +49,8 @@ t_list *ft_lstnew(void *content);
 t_list	ft_lstadd_front(t_list **head, t_list *new);
 int	ft_lstsize(t_list *lst);
 int	ft_isduplicate(t_list **lst, t_list *node);
-
-int	ft_is_sorted(t_list *node);
+int	ft_is_sorted(t_list *lst);
+t_list	ft_check_and_init(char **av, int i);
 
 
 
@@ -72,18 +69,17 @@ int main(int ac, char **av)
 	_atoi = 0;
 	if (ac < 2)
         return (0);
-	//the program must work with two arguments. (line 20)
+	
+	
+	
 	if (ac == 2)
 		av = ft_split(av[1], ' ');
 	else 
 		i = 0;
-	//init stack A
-	while (av[++i])
+/*	while (av[++i])
 	{
-		/*Check if the data is bigger than MAX_INT(2147483647)*/
-		//passing arguments to integers
+		//Check if the data is bigger than MAX_INT(2147483647)
 		_atoi = ft_atoi(av[i]);
-		//if isn't digit the program must return Error
 		if (!ft_is_digit(av[i]))
 			return (write(1, "Error", 5));
 		
@@ -92,15 +88,64 @@ int main(int ac, char **av)
 		if (ft_isduplicate(&stack_a, node))
 			return (write(1,"ErrorDup", 8));
 	}
-	//if (ft_checklist(stack_a))
-	//	return (0);
-	/*check if the list is sorted,
-	and if there are duplicates*/
+	if (!ft_is_sorted(stack_a))
+		return (write(1, "ErrorSorted", 11));
 	printf("Size of the list: %d\n", ft_lstsize(stack_a));
 	node = stack_a;
+*/
+	stack_a = ft_check_and_init(av, i);
 	printlist(stack_a);
 	return (0);
 }
+t_list	ft_check_and_init(char **av, int i)
+{
+	int			i;
+	long int	_atoi;
+	t_list		*stack_a;
+	t_list		*node;
+
+	i = -1;
+	stack_a = NULL;
+	node = NULL;
+	while (av[++i])
+	{
+		//Check if the data is bigger than MAX_INT(2147483647)
+		_atoi = ft_atoi(av[i]);
+		if (!ft_is_digit(av[i]))
+			return (write(1, "Error", 5));
+		
+		node = ft_lstnew((long int *)_atoi);
+		ft_lstadd_back(&stack_a, node);
+		if (ft_isduplicate(&stack_a, node))
+			return (write(1,"ErrorDup", 8));
+	}
+	if (!ft_is_sorted(stack_a))
+		return (write(1, "ErrorSorted", 11));
+	printf("Size of the list: %d\n", ft_lstsize(stack_a));
+	node = stack_a;
+	free (node);
+	node = NULL;
+	printlist(stack_a);
+	return (stack_a);
+}
+
+
+int	ft_is_sorted(t_list *lst)
+{
+	t_list	*temporary;
+	
+	temporary = lst;
+	while (temporary->next != NULL)
+	{
+		if (temporary->content > temporary->next->content)
+			break ;
+		temporary = temporary->next;
+	}
+	if (temporary->next == NULL)
+		return (0);
+	return (1);
+}
+
 int	ft_isduplicate(t_list **lst, t_list *node)
 {
 	t_list *temporary;
@@ -114,24 +159,6 @@ int	ft_isduplicate(t_list **lst, t_list *node)
 			return (1);
 		temporary = temporary->next;
 	}
-	return (0);
-}
-
-int	ft_is_sorted(t_list *node)
-{
-	t_list	*temporary;
-	
-	int c = 0;
-	temporary = node;
-	while (temporary->next != NULL)
-	{
-		if (!(temporary > temporary->next))
-		{
-			c++;
-		}
-		temporary = temporary->next;
-	}
-	printf("The value of c is:%d\n", c);
 	return (0);
 }
 
