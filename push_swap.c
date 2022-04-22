@@ -43,9 +43,7 @@ long int	ft_atoi_l(const char *str);
 char	**ft_split(char const *s, char c);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	printlist(t_list *head);
-t_list	*ft_lstlast(t_list *lst);
 t_list *ft_lstnew(void *content);
-t_list	ft_lstadd_front(t_list **head, t_list *new);
 int	ft_lstsize(t_list *lst);
 int	ft_isduplicate(t_list **lst, t_list *node);
 int	ft_is_sorted(t_list *lst);
@@ -70,6 +68,7 @@ int main(int ac, char **av)
 	
 
 }
+
 t_list	*ft_check_and_init(char **av, int i)
 {
 	t_list		*stack_a;
@@ -85,12 +84,12 @@ t_list	*ft_check_and_init(char **av, int i)
 		if (_atoi > 2147483647)
 			exit (write(1, "ErrorMaxInt", 11));
 	if (!ft_is_digit(av[i]))
-			exit (write(1, "Error", 5));
+			exit (write(1, "ErrorNotDigit", 13));
 		
 		node = ft_lstnew((long int *)_atoi);
 		ft_lstadd_back(&stack_a, node);
 		if (ft_isduplicate(&stack_a, node))
-			exit (write(1,"ErrorDup", 8));
+			exit (write(1,"ErrorDuplicate", 8));
 	}
 	if (!ft_is_sorted(stack_a))
 		exit (write(1, "ErrorSorted", 11));
@@ -248,28 +247,18 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*temporary;
 
+	temporary = *lst;
 	if (lst == NULL || new == NULL)
 		return ;
 	if (*lst == NULL)
 	{
-		ft_lstadd_front(lst, new);
+		new->next = *lst;
+		*lst = new;
 		return ;
 	}
-	temporary = ft_lstlast(*lst);
-	temporary->next = new;
-}
-
-void	printlist(t_list *head)
-{
-	t_list *temporary;
-	
-	temporary = head;
-	while (temporary != NULL)
-	{
-		printf("%ld -", (long int)temporary->content);
+	while (temporary->next)
 		temporary = temporary->next;
-	}
-	printf("\n");
+	temporary->next = new;
 }
 
 t_list *ft_lstnew(void *content)
@@ -284,20 +273,17 @@ t_list *ft_lstnew(void *content)
 	return (new);
 }
 
-t_list	*ft_lstlast(t_list *lst)
+void	printlist(t_list *head)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-t_list ft_lstadd_front(t_list **head, t_list *new)
-{
-	new->next = *head;
-	*head = new;
-	return (*new);
+	t_list *temporary;
+	
+	temporary = head;
+	while (temporary != NULL)
+	{
+		printf("%ld -", (long int)temporary->content);
+		temporary = temporary->next;
+	}
+	printf("\n");
 }
 
 int	ft_lstsize(t_list *lst)
