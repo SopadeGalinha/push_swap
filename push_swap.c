@@ -39,9 +39,8 @@ typedef struct s_list
 
 int		ft_isdigit(int c);
 int		ft_is_digit(char *str);
-int		ft_atoi(const char *str);
+long int	ft_atoi_l(const char *str);
 char	**ft_split(char const *s, char c);
-
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	printlist(t_list *head);
 t_list	*ft_lstlast(t_list *lst);
@@ -50,84 +49,54 @@ t_list	ft_lstadd_front(t_list **head, t_list *new);
 int	ft_lstsize(t_list *lst);
 int	ft_isduplicate(t_list **lst, t_list *node);
 int	ft_is_sorted(t_list *lst);
-t_list	ft_check_and_init(char **av, int i);
-
-
+t_list	*ft_check_and_init(char **av, int i);
 
 int main(int ac, char **av)
 {
 	t_list	*stack_a;
-	t_list	*stack_b;
-	t_list	*node;
-	int			i;
-	long int	_atoi;
+	int		i;
 
-	node = NULL;
-	stack_a = NULL;
-	stack_b = NULL;
 	i = -1;
-	_atoi = 0;
+	stack_a = NULL;
 	if (ac < 2)
-        return (0);
-	
-	
-	
+		return (0);
 	if (ac == 2)
 		av = ft_split(av[1], ' ');
-	else 
+	else
 		i = 0;
-	while (av[++i])
-	{
-		//Check if the data is bigger than MAX_INT(2147483647)
-		_atoi = ft_atoi(av[i]);
-		if (!ft_is_digit(av[i]))
-			return (write(1, "Error", 5));
-		
-		node = ft_lstnew((long int *)_atoi);
-		ft_lstadd_back(&stack_a, node);
-		if (ft_isduplicate(&stack_a, node))
-			return (write(1,"ErrorDup", 8));
-	}
-	if (!ft_is_sorted(stack_a))
-		return (write(1, "ErrorSorted", 11));
+	stack_a = ft_check_and_init(av, i);
 	printf("Size of the list: %d\n", ft_lstsize(stack_a));
-	node = stack_a;
 	printlist(stack_a);
-	return (0);
+	
+
 }
-/*
-t_list	ft_check_and_init(char **av, int i)
+t_list	*ft_check_and_init(char **av, int i)
 {
-	int			i;
-	long int	_atoi;
 	t_list		*stack_a;
 	t_list		*node;
+	long int	_atoi;
 
-	i = -1;
+	_atoi = 0;
 	stack_a = NULL;
 	node = NULL;
 	while (av[++i])
 	{
-		//Check if the data is bigger than MAX_INT(2147483647)
-		_atoi = ft_atoi(av[i]);
-		if (!ft_is_digit(av[i]))
-			return (write(1, "Error", 5));
+		_atoi = ft_atoi_l(av[i]);
+		if (_atoi > 2147483647)
+			exit (write(1, "ErrorMaxInt", 11));
+	if (!ft_is_digit(av[i]))
+			exit (write(1, "Error", 5));
 		
 		node = ft_lstnew((long int *)_atoi);
 		ft_lstadd_back(&stack_a, node);
 		if (ft_isduplicate(&stack_a, node))
-			return (write(1,"ErrorDup", 8));
+			exit (write(1,"ErrorDup", 8));
 	}
 	if (!ft_is_sorted(stack_a))
-		return (write(1, "ErrorSorted", 11));
-	printf("Size of the list: %d\n", ft_lstsize(stack_a));
+		exit (write(1, "ErrorSorted", 11));
 	node = stack_a;
-	free (node);
-	node = NULL;
-	printlist(stack_a);
 	return (stack_a);
 }
-*/
 
 int	ft_is_sorted(t_list *lst)
 {
@@ -254,10 +223,10 @@ char	**ft_split(char const *s, char c)
 	return (splitting(split, s, c));
 }
 
-int	ft_atoi(const char *str)
+long int	ft_atoi_l(const char *str)
 {
-	int	result;
-	int	sign;
+	long int	result;
+	int			sign;
 
 	result = 0;
 	sign = 1;
@@ -271,8 +240,6 @@ int	ft_atoi(const char *str)
 	{
 		result = result * 10 + *str - '0';
 		str++;
-		if (result > 2147483647)
-			return (0);
 	}
 	return (result * sign);
 }
