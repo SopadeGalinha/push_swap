@@ -37,17 +37,23 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+t_list	*ft_lstnew(void *content);
+t_list	*ft_check_and_init(char **av, int i);
+
+void		ft_lstadd_back(t_list **lst, t_list *new);
+int			ft_lstsize(t_list *lst);
+char		**ft_split(char const *s, char c);
+long int	ft_atoi_l(const char *str);
+
+// JUST TO VISUALIZE WHAT I AM DOING.
+void	printlist(t_list *head);
+
+//ERRORS CHECKERS.
 int		ft_isdigit(int c);
 int		ft_is_digit(char *str);
-long int	ft_atoi_l(const char *str);
-char	**ft_split(char const *s, char c);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	printlist(t_list *head);
-t_list *ft_lstnew(void *content);
-int	ft_lstsize(t_list *lst);
-int	ft_isduplicate(t_list **lst, t_list *node);
-int	ft_is_sorted(t_list *lst);
-t_list	*ft_check_and_init(char **av, int i);
+int		ft_is_sorted(t_list *lst);
+int		ft_isduplicate(t_list **lst, t_list *node);
+
 
 int main(int ac, char **av)
 {
@@ -65,8 +71,6 @@ int main(int ac, char **av)
 	stack_a = ft_check_and_init(av, i);
 	printf("Size of the list: %d\n", ft_lstsize(stack_a));
 	printlist(stack_a);
-	
-
 }
 
 t_list	*ft_check_and_init(char **av, int i)
