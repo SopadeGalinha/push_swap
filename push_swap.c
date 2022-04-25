@@ -28,7 +28,6 @@ $>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
 typedef struct s_list
 {
 	void			*content;
-	size_t			position;
 	struct s_list	*next;
 }				t_list;
 
@@ -58,13 +57,33 @@ int		ft_is_digit(char *str);
 int		ft_is_sorted(t_list *lst);
 int		ft_isduplicate(t_list **lst, t_list *node);
 
+
+//IN PROGRESS
+
+t_list	*ft_lstdelfront(t_list *head);
+
+//PUSH && SWAP FUNCTIONS
+void	swap(t_list **stack);
+void	sa(t_list **stack_a);
+void	sb(t_list **stack_b);
+void	ss(t_list **stack_a, t_list **stack_b);
+
+void	push(t_list **stack_src, t_list **stack_dst);
+void	pb(t_list **stack_a, t_list **stack_b);
+void	pa(t_list **stack_a, t_list **stack_b);
+
+
+
+
 int main(int ac, char **av)
 {
 	t_list	*stack_a;
+	t_list	*stack_b;
 	int		i;
 
 	i = -1;
 	stack_a = NULL;
+	stack_b = NULL;
 	if (ac < 2)
 		return (0);
 	if (ac == 2)
@@ -72,9 +91,91 @@ int main(int ac, char **av)
 	else
 		i = 0;
 	stack_a = ft_check_and_init(av, i);
-	printf("Size of the list: %d\n", ft_lstsize(stack_a));
+
 	printlist(stack_a);
+	pb(&stack_a, &stack_b);
+	pa(&stack_a, &stack_b);
+	sa(&stack_a);
+
+
+	printf("Stack A: ");
+	printlist(stack_a);
+	printf("Stack B: ");
+	printlist(stack_b);
 }
+//SWAP FUNCTION
+void	swap(t_list **stack)
+{
+	t_list	*swap;
+	t_list	*tmp;
+
+	tmp = *stack;
+	swap =(*stack)->next;
+	(*stack)->next = swap->next;
+	*stack = swap;
+	(*stack)->next = tmp;
+}
+
+//Swap the first 2 elements at the top of stack a.
+//Do nothing if there is only one or no elements.
+void	sa(t_list **stack_a)
+{
+	if (!stack_a || !*stack_a || ft_lstsize(*stack_a) < 2)
+		return ;
+	swap(stack_a);
+	write(1, "sa\n", 3);
+}
+
+//SB: Swap the first 2 elements at the top of stack b.
+//Do nothing if there is only one or no elements
+void	sb(t_list **stack_b)
+{
+	if (!stack_b || !*stack_b || ft_lstsize(*stack_b) < 2)
+		return ;
+	swap(stack_b);
+	write(1, "sb\n", 3);
+	
+}
+
+//SS: sa and sb at the same time.
+void	ss(t_list **stack_a, t_list **stack_b)
+{
+	sa(stack_a);
+	sb(stack_b);
+	write (1, "ss\n", 3);
+}
+
+
+//PUSH FUNCTION
+void push(t_list **stack_src, t_list **stack_dst)
+{
+	t_list *temporary;
+	temporary = *stack_src;
+	*stack_src = (*stack_src)->next;
+	temporary->next = *stack_dst;
+	*stack_dst = temporary;
+}
+
+//PA: Take the first element at the top of b and put it at the top of a
+void	pa(t_list **stack_a, t_list **stack_b)
+{
+	if (!stack_b)
+		return ;
+	push(stack_b, stack_a);
+	write(1, "pa\n", 3);
+}
+
+//PB: Take the first element at the top of a and put it at the top of b
+void	pb(t_list **stack_a, t_list **stack_b)
+{
+	if (!stack_a)
+		return ;
+	push(stack_a, stack_b);
+	write(1, "pb\n", 3);
+}
+
+
+//ALREADY DONE//
 
 t_list	*ft_check_and_init(char **av, int i)
 {
