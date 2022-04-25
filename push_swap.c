@@ -59,7 +59,7 @@ int		ft_isduplicate(t_list **lst, t_list *node);
 
 
 //IN PROGRESS
-
+// int	ft_is_argument(const char *str);
 t_list	*ft_lstdelfront(t_list *head);
 
 //PUSH && SWAP FUNCTIONS
@@ -71,8 +71,6 @@ void	ss(t_list **stack_a, t_list **stack_b);
 void	push(t_list **stack_src, t_list **stack_dst);
 void	pb(t_list **stack_a, t_list **stack_b);
 void	pa(t_list **stack_a, t_list **stack_b);
-
-
 
 
 int main(int ac, char **av)
@@ -174,6 +172,13 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	write(1, "pb\n", 3);
 }
 
+// int	ft_is_argument(const char *str)
+// {
+// 	while (*++str)
+// 		if(*str == ' ')
+// 			return(1);
+// 	return (0);
+// }
 
 //ALREADY DONE//
 
