@@ -61,7 +61,9 @@ int		ft_isduplicate(t_list **lst, t_list *node);
 //IN PROGRESS
 // int	ft_is_argument(const char *str);
 t_list	*ft_lstdelfront(t_list *head);
-void	shiftup(t_list **stack);
+void	rotate(t_list **stack);
+void	reverse_rotate(t_list **stack);
+
 
 
 //PUSH && SWAP FUNCTIONS
@@ -92,18 +94,19 @@ int main(int ac, char **av)
 		i = 0;
 	stack_a = ft_check_and_init(av, i);
 
-	printf("Stack A: ");
-	printlist(stack_a);
 	// pb(&stack_a, &stack_b);
 	// pa(&stack_a, &stack_b);
 	// sa(&stack_a);
-	shiftup(&stack_a);
+	rotate(&stack_a);
 
 
 	printf("Stack A: ");
 	printlist(stack_a);
+	reverse_rotate(&stack_a);
 	// printf("Stack B: ");
 	// printlist(stack_b);
+	printf("Stack A: ");
+	printlist(stack_a);
 }
 //SWAP FUNCTION
 void	swap(t_list **stack)
@@ -176,35 +179,79 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	write(1, "pb\n", 3);
 }
 
-
-t_list	*ft_lstlast(t_list *lst);
-
-//SHIFT UP FUNCTION
-void	shiftup(t_list **stack)
+//ROTATE FUNCTION
+// The first element becomes the last one
+void	rotate(t_list **stack)
 {
 	t_list	*tail;
 	t_list	*head;
 
-	tail = ft_lstlast(*stack);
+	tail = *stack;
+	while (tail->next)	
+		tail = tail->next;
 	head = *stack;
 	*stack = (*stack)->next;
 	tail->next = head;
 	head->next = NULL;
-
-	printf("H: %ld\n", (long int)head->content); 
-	printf("T: %ld\n", (long int)tail->content); 
 }
 
-t_list	*ft_lstlast(t_list *lst)
+// Shift up all elements of stack a by 1.
+void	ra(t_list **stack_a)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	rotate(stack_a);
+	write (1, "ra\n", 3);
 }
 
+// Shift up all elements of stack b by 1.
+void	rb(t_list **stack_b)
+{
+	rotate(stack_b);
+	write(1, "rb\n", 3);
+}
 
+// ra and rb at the same time.
+void	rr(t_list **stack_a, t_list **stack_b)
+{
+	rotate(stack_a);
+	rotate(stack_b);
+	write (1, "rr\n", 3);
+}
+
+//REVERSE ROTATE
+//The last element becomes the first one.
+void	reverse_rotate(t_list **stack)
+{
+	t_list	*tmp;
+	t_list	*tail;
+	
+	tail = *stack;
+	while (tail->next)
+	{
+		tmp = tail;
+		tail = tail->next;
+	}
+	tail->next = *stack;
+	tmp->next = NULL;
+	*stack = tail;
+}
+void	rra(t_list **stack_a)
+{
+	reverse_rotate(stack_a);
+	write(1, "rra\n", 4);
+}
+
+void	rrb(t_list **stack_b)
+{
+	reverse_rotate(stack_b);
+	write(1, "rrb\n", 4);
+}
+
+void	rrr(t_list **stack_a, t_list **stack_b)
+{
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
+	write(1, "rrr\n", 4);
+}
 
 
 //ALREADY DONE//
