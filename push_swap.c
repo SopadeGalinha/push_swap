@@ -66,7 +66,7 @@ void	reverse_rotate(t_list **stack);
 
 
 
-//PUSH && SWAP FUNCTIONS
+//MANDATORY FUNCTIONS
 void	swap(t_list **stack);
 void	sa(t_list **stack_a);
 void	sb(t_list **stack_b);
@@ -94,17 +94,6 @@ int main(int ac, char **av)
 		i = 0;
 	stack_a = ft_check_and_init(av, i);
 
-	// pb(&stack_a, &stack_b);
-	// pa(&stack_a, &stack_b);
-	// sa(&stack_a);
-	rotate(&stack_a);
-
-
-	printf("Stack A: ");
-	printlist(stack_a);
-	reverse_rotate(&stack_a);
-	// printf("Stack B: ");
-	// printlist(stack_b);
 	printf("Stack A: ");
 	printlist(stack_a);
 }
@@ -149,7 +138,6 @@ void	ss(t_list **stack_a, t_list **stack_b)
 	sb(stack_b);
 	write (1, "ss\n", 3);
 }
-
 
 //PUSH FUNCTION
 void push(t_list **stack_src, t_list **stack_dst)
@@ -198,6 +186,8 @@ void	rotate(t_list **stack)
 // Shift up all elements of stack a by 1.
 void	ra(t_list **stack_a)
 {
+	if (ft_lstsize(stack_a) < 2)
+		return ;
 	rotate(stack_a);
 	write (1, "ra\n", 3);
 }
@@ -205,6 +195,8 @@ void	ra(t_list **stack_a)
 // Shift up all elements of stack b by 1.
 void	rb(t_list **stack_b)
 {
+	if (ft_lstsize(stack_b) < 2)
+		return ;
 	rotate(stack_b);
 	write(1, "rb\n", 3);
 }
@@ -234,6 +226,7 @@ void	reverse_rotate(t_list **stack)
 	tmp->next = NULL;
 	*stack = tail;
 }
+
 void	rra(t_list **stack_a)
 {
 	reverse_rotate(stack_a);
