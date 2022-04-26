@@ -61,6 +61,8 @@ int		ft_isduplicate(t_list **lst, t_list *node);
 //IN PROGRESS
 // int	ft_is_argument(const char *str);
 t_list	*ft_lstdelfront(t_list *head);
+void	shiftup(t_list **stack);
+
 
 //PUSH && SWAP FUNCTIONS
 void	swap(t_list **stack);
@@ -90,16 +92,18 @@ int main(int ac, char **av)
 		i = 0;
 	stack_a = ft_check_and_init(av, i);
 
+	printf("Stack A: ");
 	printlist(stack_a);
-	pb(&stack_a, &stack_b);
-	pa(&stack_a, &stack_b);
-	sa(&stack_a);
+	// pb(&stack_a, &stack_b);
+	// pa(&stack_a, &stack_b);
+	// sa(&stack_a);
+	shiftup(&stack_a);
 
 
 	printf("Stack A: ");
 	printlist(stack_a);
-	printf("Stack B: ");
-	printlist(stack_b);
+	// printf("Stack B: ");
+	// printlist(stack_b);
 }
 //SWAP FUNCTION
 void	swap(t_list **stack)
@@ -172,13 +176,36 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	write(1, "pb\n", 3);
 }
 
-// int	ft_is_argument(const char *str)
-// {
-// 	while (*++str)
-// 		if(*str == ' ')
-// 			return(1);
-// 	return (0);
-// }
+
+t_list	*ft_lstlast(t_list *lst);
+
+//SHIFT UP FUNCTION
+void	shiftup(t_list **stack)
+{
+	t_list	*tail;
+	t_list	*head;
+
+	tail = ft_lstlast(*stack);
+	head = *stack;
+	*stack = (*stack)->next;
+	tail->next = head;
+	head->next = NULL;
+
+	printf("H: %ld\n", (long int)head->content); 
+	printf("T: %ld\n", (long int)tail->content); 
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+
+
 
 //ALREADY DONE//
 
