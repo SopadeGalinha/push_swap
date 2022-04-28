@@ -20,6 +20,8 @@ $>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
 6
 */
 
+#include "../includes/push_swap.h"
+
 t_list	*ft_check_and_init(char **av, int i);
 /* This function will check errors and 
 ** initialize Stack A.
@@ -37,12 +39,10 @@ int		ft_lstsize(t_list *lst);
 int main(int ac, char **av)
 {
 	t_list	*stack_a;
-	t_list	*stack_b;
 	int		i;
 
 	i = -1;
 	stack_a = NULL;
-	stack_b = NULL;
 	if (ac < 2)
 		return (0);
 	if (ac == 2)
@@ -57,6 +57,7 @@ int main(int ac, char **av)
 
 t_list	*ft_check_and_init(char **av, int i)
 {
+	t_list		*stack_a;
 	t_list		*node;
 	long int	_atoi;
 

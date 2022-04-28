@@ -12,7 +12,7 @@
 
 NAME =  push_swap
 
-SRCS = ${wildcard operations/*.c} ${wildcard minilibft/*.c} ${srcs/*.c}
+SRCS = ${wildcard operations/*.c} ${wildcard minilibft/*.c} ${wildcard srcs/*.c}
 OBJS = ${SRCS:.c=.o}
 
 CFLAGS	= -Wall -Wextra -Werror -I includes/
@@ -23,6 +23,7 @@ RL = ar -s
 ${NAME}:	${OBJS}
 	${CL}	${NAME}	${OBJS}
 	${RL}	${NAME}
+	${CC}	${CFLAGS} -o $@ $^ -Iincludes/
 
 all: ${NAME}
 
