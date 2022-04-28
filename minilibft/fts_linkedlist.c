@@ -59,3 +59,44 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (i);
 }
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+t_list	*ft_smallest_node(t_list *lst)
+{
+	t_list	*smallest;
+	t_list	*node;
+
+	node = lst;
+	smallest = lst;
+	while (node->next)
+	{
+		node = node->next;
+		if (smallest->content > node->content)
+			smallest = node;
+	}
+	return (smallest);
+}
+
+t_list	*ft_biggerst_node(t_list *lst)
+{
+	t_list	*biggerst;
+	t_list	*node;
+
+	node = lst;
+	biggerst = node;
+	while (node->next)
+	{
+		node = node->next;
+		if (node->content > biggerst->content)
+			biggerst = node;
+	}
+	return (biggerst);
+}

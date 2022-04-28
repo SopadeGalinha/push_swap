@@ -53,6 +53,10 @@ int main(int ac, char **av)
 
 	printf("Stack A: ");
 	printlist(stack_a);
+	ft_sort_three(&stack_a);
+	printf("\nStack A: ");
+	printlist(stack_a);
+
 }
 
 t_list	*ft_check_and_init(char **av, int i)

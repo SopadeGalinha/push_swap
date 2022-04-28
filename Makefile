@@ -17,12 +17,10 @@ OBJS = ${SRCS:.c=.o}
 
 CFLAGS	= -Wall -Wextra -Werror -I includes/
 
-CL = ar -rc
-RL = ar -s
+CL = ar -rcs
 
 ${NAME}:	${OBJS}
 	${CL}	${NAME}	${OBJS}
-	${RL}	${NAME}
 	${CC}	${CFLAGS} -o $@ $^ -Iincludes/
 
 all: ${NAME}
