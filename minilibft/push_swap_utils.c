@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "../includes/push_swap.h"
 
 //CHECK IF THE LIST IS SORTED
 int	ft_is_sorted(t_list *lst)

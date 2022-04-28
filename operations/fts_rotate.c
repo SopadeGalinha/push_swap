@@ -12,6 +12,8 @@
 
 // The first element becomes the last one
 
+#include "../includes/push_swap.h"
+
 //ROTATE FUNCTION
 void	rotate(t_list **stack)
 {
@@ -30,7 +32,7 @@ void	rotate(t_list **stack)
 // Shift up all elements of stack a by 1.
 void	ra(t_list **stack_a)
 {
-	if (ft_lstsize(stack_a) < 2)
+	if (ft_lstsize(*stack_a) < 2)
 		return ;
 	rotate(stack_a);
 	write (1, "ra\n", 3);
@@ -39,7 +41,7 @@ void	ra(t_list **stack_a)
 // Shift up all elements of stack b by 1.
 void	rb(t_list **stack_b)
 {
-	if (ft_lstsize(stack_b) < 2)
+	if (ft_lstsize(*stack_b) < 2)
 		return ;
 	rotate(stack_b);
 	write(1, "rb\n", 3);

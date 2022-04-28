@@ -57,21 +57,18 @@ int main(int ac, char **av)
 
 t_list	*ft_check_and_init(char **av, int i)
 {
-	t_list		*stack_a;
 	t_list		*node;
 	long int	_atoi;
 
 	_atoi = 0;
-	stack_a = NULL;
 	node = NULL;
 	while (av[++i])
 	{
 		_atoi = ft_atoi_l(av[i]);
 		if (_atoi > 2147483647)
 			exit (write(1, "ErrorMaxInt", 11));
-	if (!ft_is_digit(av[i]))
+		if (!ft_is_digit(av[i]))
 			exit (write(1, "ErrorNotDigit", 13));
-		
 		node = ft_lstnew((long int *)_atoi);
 		ft_lstadd_back(&stack_a, node);
 		if (ft_isduplicate(&stack_a, node))

@@ -6,10 +6,11 @@
 /*   By: jhgoncal <jhgoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 12:01:39 by jhgoncal          #+#    #+#             */
-/*   Updated: 2022/04/27 11:16:15 by jhgoncal         ###   ########lyon.fr   */
+/*   Updated: 2022/04/28 02:56:51 by jhgoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/push_swap.h"
 
 //Swap the first 2 elements at the top of stack.
 //Do nothing if there is only one or no elements.

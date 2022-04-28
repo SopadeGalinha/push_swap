@@ -12,6 +12,9 @@
 
 // FT_ATOI (ARGUMENT TO INTEGER)
 // CONVERT A STRING TO AN INTEGER
+
+#include "../includes/push_swap.h"
+
 long int	ft_atoi_l(const char *str)
 {
 	long int	result;

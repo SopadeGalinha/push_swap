@@ -6,13 +6,14 @@
 /*   By: jhgoncal <jhgoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 12:41:27 by jhgoncal          #+#    #+#             */
-/*   Updated: 2022/04/27 11:14:47 by jhgoncal         ###   ########lyon.fr   */
+/*   Updated: 2022/04/28 02:57:24 by jhgoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 //PA: Take the first element at the top of b and put it at the top of a
 //PB: Take the first element at the top of a and put it at the top of b
+
+#include "../includes/push_swap.h"
 
 //PUSH FUNCTION
 void push(t_list **stack_src, t_list **stack_dst)

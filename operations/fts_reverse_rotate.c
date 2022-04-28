@@ -12,6 +12,8 @@
 
 //The last element becomes the first one.
 
+#include "../includes/push_swap.h"
+
 //REVERSE ROTATE
 void	reverse_rotate(t_list **stack)
 {

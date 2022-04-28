@@ -60,10 +60,11 @@ int		ft_is_digit(char *str);
 int		ft_is_sorted(t_list *lst);
 int		ft_isduplicate(t_list **lst, t_list *node);
 
-//BACKUP FUNCTIONS
+//MINILIBFT FUNCTIONS
 long int	ft_atoi_l(const char *str);
 t_list		*ft_lstnew(void *content);
 char		**ft_split(char const *s, char c);
+int			ft_lstsize(t_list *lst);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 
 #endif
