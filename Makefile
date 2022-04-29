@@ -12,7 +12,8 @@
 
 NAME =  push_swap
 
-SRCS = ${wildcard operations/*.c} ${wildcard minilibft/*.c} ${wildcard srcs/*.c}
+SRCS = ${wildcard operations/*.c} ${wildcard minilibft/*.c} \
+	 ${wildcard srcs/*.c} ${wildcard algorithms/*.c}
 OBJS = ${SRCS:.c=.o}
 
 CFLAGS	= -Wall -Wextra -Werror -I includes/

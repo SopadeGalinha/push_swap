@@ -12,60 +12,37 @@
 
 #include "../includes/push_swap.h"
 
-//CREATE A NEW NODE
-t_list	*ft_lstnew(void *content)
+//FIND THE SMALLEST NODE
+t_list	*ft_smallest_node(t_list *lst)
 {
-	t_list	*new;
+	t_list	*smallest;
+	t_list	*node;
 
-	new = (t_list *)malloc(sizeof(t_list));
-	if (new == NULL)
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
-}
-
-//ADD THE NODE AT THE END OF THE LIST
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*temporary;
-
-	temporary = *lst;
-	if (lst == NULL || new == NULL)
-		return ;
-	if (*lst == NULL)
+	node = lst;
+	smallest = lst;
+	while (node->next)
 	{
-		new->next = *lst;
-		*lst = new;
-		return ;
+		node = node->next;
+		if (smallest->content > node->content)
+			smallest = node;
 	}
-	while (temporary->next)
-		temporary = temporary->next;
-	temporary->next = new;
+	return (smallest);
 }
 
-//FIND THE LAST NODE
-t_list	*ft_lstlast(t_list *lst)
+//FIND THE BIGGERST NODE
+t_list	*ft_biggerst_node(t_list *lst)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+	t_list	*biggerst;
+	t_list	*node;
 
-//RETURN THE SIZE OF THE LIST
-int	ft_lstsize(t_list *lst)
-{
-	int	i;
-
-	i = 0;
-	if (!(lst))
-		return (0);
-	while (lst)
+	node = lst;
+	biggerst = node;
+	while (node->next)
 	{
-		lst = lst->next;
-		i++;
+		node = node->next;
+		if (node->content > biggerst->content)
+			biggerst = node;
 	}
-	return (i);
+	return (biggerst);
 }
+

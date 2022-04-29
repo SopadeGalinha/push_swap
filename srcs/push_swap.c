@@ -10,16 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** Init A with the list.
-** Init B as empty.
-** Check if the data is sorted.
-** The first argument must be the head of the list
-** the program must work with only two arguments. Ex:
-$>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
-6
-*/
-
 #include "../includes/push_swap.h"
 
 t_list	*ft_check_and_init(char **av, int i);
@@ -39,10 +29,12 @@ int		ft_lstsize(t_list *lst);
 int main(int ac, char **av)
 {
 	t_list	*stack_a;
+	t_list	*stack_b;
 	int		i;
 
 	i = -1;
 	stack_a = NULL;
+	stack_b = NULL;
 	if (ac < 2)
 		return (0);
 	if (ac == 2)
@@ -53,7 +45,7 @@ int main(int ac, char **av)
 
 	printf("Stack A: ");
 	printlist(stack_a);
-	ft_sort_three(&stack_a);
+	ft_sort_six(&stack_a, &stack_b);
 	printf("\nStack A: ");
 	printlist(stack_a);
 

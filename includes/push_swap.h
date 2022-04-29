@@ -70,8 +70,14 @@ t_list		*ft_lstlast(t_list *lst);
 t_list	*ft_smallest_node(t_list *lst);
 t_list	*ft_biggerst_node(t_list *lst);
 
+void	printlist(t_list *head);
+int	ft_count_sorted(t_list **stack);
+void threepb(t_list **stack_a, t_list **stack_b);
+int	ft_reverse_sorted(t_list *lst);
+int	ft_count_reverse_sorted(t_list **stack);
+
 //ALGORITHMS
 void	ft_sort_three(t_list **stack_a);
-
+void	ft_sort_six(t_list **stack_a, t_list **stack_b);
 
 #endif
