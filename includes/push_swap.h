@@ -75,9 +75,11 @@ int	ft_count_sorted(t_list **stack);
 void threepb(t_list **stack_a, t_list **stack_b);
 int	ft_reverse_sorted(t_list *lst);
 int	ft_count_reverse_sorted(t_list **stack);
+t_list	*ft_lst_beforelast(t_list *lst);
+
 
 //ALGORITHMS
 void	ft_sort_three(t_list **stack_a);
-void	ft_sort_six(t_list **stack_a, t_list **stack_b);
+void	ft_sort_five(t_list **stack_a, t_list **stack_b);
 
 #endif

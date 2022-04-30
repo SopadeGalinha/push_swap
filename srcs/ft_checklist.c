@@ -56,10 +56,10 @@ int	ft_count_sorted(t_list **stack)
 	c = 0;
 	while (temporary->next != NULL)
 	{
+		c++;
 		if (temporary->content > temporary->next->content)
 			break ;
 		temporary = temporary->next;
-		c++;
 	}
 	return (c);
 }

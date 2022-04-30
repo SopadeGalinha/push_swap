@@ -58,79 +58,76 @@ void ft_all_b_to_a(t_list **stack_a, t_list **stack_b)
 		pa(stack_a, stack_b);
 }
 
-
-void	ft_sort_six(t_list **stack_a, t_list **stack_b)
+t_list	*ft_lst_beforelast(t_list *lst)
 {
-	t_list	*node;
-
-	node = *stack_a;
-	while (ft_lstsize(*stack_a) != 3)
-	{
-		if (ft_count_sorted(stack_a) == 3)
-		{
-			threepb(stack_a, stack_b);
-			break ;
-		}
-		if (node->content == ft_smallest_node(*stack_a)->content)
-			pb(stack_a, stack_b);
-	}
-	while (1)
-	{
-		if (ft_lstsize(*stack_b) > 2 &&
-			reverse_sorted(*stack_b) && ft_is_sorted(*stack_a)
-			{
-				threepb(stack_a, stack_b);
-				break ;
-			}
-	}
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next->next)
+		lst = lst->next;
+	return (lst);
 }
 
-/* void	ft_sort_five(t_list **stack_a, t_list **stack_b)
+void	ft_sort_five(t_list **stack_a, t_list **stack_b)
 {
-	t_list *node;
-
-	node = *stack_a;
-	while (*stack_a && ft_is_sorted(*stack_a))
+	while (ft_is_sorted(*stack_a))
 	{
-		if (ft_lstlast(*stack_a)->content == ft_smallest_node(*stack_a)->content)
+		while ((*stack_a)->content != ft_smallest_node(*stack_a)->content)
+		{
+			if ((*stack_a)->content > (*stack_a)->next->content)
+				sa(stack_a);
+			rra(stack_a);
+		}
+		if (ft_smallest_node(*stack_a)->content == (*stack_a)->content)
+			pb(stack_a, stack_b);
+		if (ft_lstsize(*stack_a) == 3)
+			break;
+	}
+	ft_sort_three(stack_a);
+	if (stack_b)
+		ft_all_b_to_a(stack_a, stack_b);
+}
+/*
+void	ft_sort_five(t_list **stack_a, t_list **stack_b)
+{
+	printf("Sorted = %d", ft_count_sorted(stack_a));
+	while (!ft_is_sorted(*stack_a))
+	{
+		if (ft_count_sorted(stack_a) == 2)
+		{
+			if (ft_smallest_node(*stack_a)->content == (*stack_a)->content)
+			{
+				pb(stack_a, stack_b);
+				pb(stack_a, stack_b);
+				ft_sort_three(stack_a);
+				ft_all_b_to_a(stack_a, stack_b);
+			}
+			else
+			{
+				
+			}
+		}
+	}
+	if (ft_count_sorted(stack_a) == 4)
+	{
+		if (ft_smallest_node(*stack_a)->content == (*stack_a)->content)
 		{
 			rra(stack_a);
-			node = *stack_a;
-			if (node->content > node->next->content)
-				sa(stack_a);
-			else
-				pb(stack_a, stack_b);
-		}
-		if (ft_lstlast(*stack_a)->content == ft_biggerst_node(*stack_a)->content)
-		{
 			rra(stack_a);
 			sa(stack_a);
+			ra(stack_a);
+			ra(stack_a);
 		}
-		sa(stack_a);
-		if (ft_reverse_sorted(*stack_b))
+		else if (ft_smallest_node(*stack_a)->content == ft_lstlast(*stack_a)->content)
 		{
-			while (ft_lstsize(*stack_b) > 0)
-				pa(stack_a, stack_b);
-
+			rra(stack_a);
+		}
+		else
+		{
+			rra(stack_a);
+			rra(stack_a);
+			sa(stack_a);
+			ra(stack_a);
 		}
 	}
-	printf("Sorted: %d", ft_count_sorted(stack_a));
-	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	if (ft_count_sorted(stack_a) == 3)
-	{
-		rra(stack_a);
-		rra(stack_a);
-		sa(stack_a);
-		ra(stack_a);
-		ra(stack_a);
-	}
-
-	if (*stack_b)
-	{
-		printf("Stack B: ");
-		printlist(*stack_b);
-	}
-		
 }
  */

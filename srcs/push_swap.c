@@ -45,9 +45,14 @@ int main(int ac, char **av)
 
 	printf("Stack A: ");
 	printlist(stack_a);
-	ft_sort_six(&stack_a, &stack_b);
+	ft_sort_five(&stack_a, &stack_b);
 	printf("\nStack A: ");
 	printlist(stack_a);
+	if (stack_b)
+	{
+		printf("\nStack B: ");
+		printlist(stack_b);
+	}
 
 }
 
