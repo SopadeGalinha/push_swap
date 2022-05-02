@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// The first element becomes the last one
 
 #include "../includes/push_swap.h"
 
 //ROTATE FUNCTION
+
+// The first element becomes the last one
 void	rotate(t_list **stack)
 {
 	t_list	*tail;
@@ -29,7 +30,7 @@ void	rotate(t_list **stack)
 	head->next = NULL;
 }
 
-// Shift up all elements of stack a by 1.
+// The first element of A becomes the last one
 void	ra(t_list **stack_a)
 {
 	if (ft_lstsize(*stack_a) < 2)
@@ -38,7 +39,7 @@ void	ra(t_list **stack_a)
 	write (1, "ra\n", 3);
 }
 
-// Shift up all elements of stack b by 1.
+// The first element of B becomes the last one
 void	rb(t_list **stack_b)
 {
 	if (ft_lstsize(*stack_b) < 2)

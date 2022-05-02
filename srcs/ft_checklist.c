@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-//CHECK IF THE LIST IS SORTED
+// Return 0 if the list is sorted
 int	ft_is_sorted(t_list *lst)
 {
 	t_list	*temporary;
