@@ -69,3 +69,13 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (i);
 }
+
+// FIND THE NODE BEFORE THE LAST ONE
+t_list	*ft_lst_beforelast(t_list *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next->next)
+		lst = lst->next;
+	return (lst);
+}

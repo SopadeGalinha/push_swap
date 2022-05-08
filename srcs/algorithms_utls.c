@@ -12,26 +12,20 @@
 
 #include "../includes/push_swap.h"
 
-// PUSH ALL NUMBERS OF B TO A
+// PUSH ALL NUMBERS OF B TO A AND ORGANIZE
 void ft_all_b_to_a(t_list **stack_a, t_list **stack_b)
 {
 	if (*stack_b == NULL)
 		return ;
-	while (ft_lstsize(*stack_b) >= 1)
+	while (*stack_b)
+	{
+		if ((*stack_a)->content > (*stack_a)->next->content)
+			sa(stack_a);
 		pa(stack_a, stack_b);
+	}
 }
 
-// FIND THE NODE BEFORE THE LAST ONE
-t_list	*ft_lst_beforelast(t_list *lst)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next->next)
-		lst = lst->next;
-	return (lst);
-}
-
-//SORT WITH THE NUMBERS
+//SORT THREE NUMBERS
 void	ft_sort_three(t_list **stack_a)
 {
 	t_list	*node;
@@ -60,35 +54,65 @@ void	ft_sort_three(t_list **stack_a)
 	}
 }
 
-// Calculate the distance between the head of the node and the node searched
-int		ft_lstdistance(t_list **head, void *content)
+//SORT THREE NUMBERS IN REVERSE ORDER
+void	ft_reverse_sort_three(t_list **stack_b)
 {
-	t_list *temporary;
-	int		d;
-
-	d = 0;
-	temporary = *head;
-	while (temporary != NULL)
+	if (!ft_reverse_sorted(*stack_b))
+		return ;
+	if ((*stack_b)->content == ft_biggerst_node(*stack_b)->content)
 	{
-		d++;
-		if (temporary->content == (void *)content)
-			return (d);
-		temporary = temporary->next;
+		rrb(stack_b);
+		sb(stack_b);
 	}
-	return (d);
+	else if (ft_lstlast(*stack_b)->content == ft_biggerst_node(*stack_b)->content)
+	{
+		if ((*stack_b)->content == ft_smallest_node(*stack_b)->content)
+		{
+			sb(stack_b);
+			rrb(stack_b);
+		}
+		else
+			rrb(stack_b);
+	}
+	else
+	{
+		if ((*stack_b)->content == ft_smallest_node(*stack_b)->content)
+			rb(stack_b);
+		else
+			sb(stack_b);
+	}
 }
 
-//FIND THE CONTENT IN THE LIST
-t_list	*ft_lstfind(t_list **head, void *content)
+//FIND THE SMALLEST NODE
+t_list	*ft_smallest_node(t_list *lst)
 {
-	t_list *temporary;
+	t_list	*smallest;
+	t_list	*node;
 
-	temporary = *head;
-	while (temporary != NULL)
+	node = lst;
+	smallest = lst;
+	while (node->next)
 	{
-		if (temporary->content == (void *)content)
-			return (temporary);
-		temporary = temporary->next;
+		node = node->next;
+		if (smallest->content > node->content)
+			smallest = node;
 	}
-	return (NULL);
+	return (smallest);
+}
+
+//FIND THE BIGGERST NODE
+t_list	*ft_biggerst_node(t_list *lst)
+{
+	t_list	*biggerst;
+	t_list	*node;
+
+	node = lst;
+	biggerst = node;
+	while (node->next)
+	{
+		node = node->next;
+		if (node->content > biggerst->content)
+			biggerst = node;
+	}
+	return (biggerst);
 }

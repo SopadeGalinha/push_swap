@@ -67,31 +67,23 @@ char		**ft_split(char const *s, char c);
 int			ft_lstsize(t_list *lst);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 t_list		*ft_lstlast(t_list *lst);
+
 t_list	*ft_smallest_node(t_list *lst);
 t_list	*ft_biggerst_node(t_list *lst);
-
-// Nothing yet
-void	printlist(t_list *head);
-int	ft_count_sorted(t_list **stack);
-void threepb(t_list **stack_a, t_list **stack_b);
-int	ft_reverse_sorted(t_list *lst);
-int	ft_count_reverse_sorted(t_list **stack);
-t_list	*ft_lst_beforelast(t_list *lst);
-void	printlist(t_list *head);
-
 
 //ALGORITHMS
 void	ft_sort_three(t_list **stack_a);
 void	ft_sort_four(t_list **stack_a, t_list **stack_b);
-void	ft_sort_five(t_list **stack_a, t_list ** stack_b);
-void	ft_sort_six(t_list **stack_a, t_list ** stack_b);
+void	ft_sort_ten(t_list **stack_a, t_list ** stack_b);
 
 //ALGORITHMS UTLS
-void ft_all_b_to_a(t_list **stack_a, t_list **stack_b);
 t_list	*ft_lst_beforelast(t_list *lst);
-int		ft_lstdistance(t_list **head, void *content);
-t_list	*ft_lstfind(t_list **head, void *content);
+void	ft_all_b_to_a(t_list **stack_a, t_list **stack_b);
+int		ft_reverse_sorted(t_list *lst);
 void	ft_reverse_sort_three(t_list **stack_b);
+void	ft_small_to_b_beggining(t_list **stack_a, t_list **stack_b);
 
+//Nothing
+void	printlist(t_list *head);
 
 #endif

@@ -46,24 +46,6 @@ int	ft_reverse_sorted(t_list *lst)
 	return (1);
 }
 
-//COUNT HOW MANY NODES ARE SORTED
-int	ft_count_sorted(t_list **stack)
-{
-	t_list *temporary;
-	int		c;
-
-	temporary = *stack;
-	c = 0;
-	while (temporary->next != NULL)
-	{
-		c++;
-		if (temporary->content > temporary->next->content)
-			break ;
-		temporary = temporary->next;
-	}
-	return (c);
-}
-
 //COUNT HOW MANY NODES ARE REVERSE SORTED
 int	ft_count_reverse_sorted(t_list **stack)
 {
