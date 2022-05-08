@@ -15,6 +15,8 @@
 // PUSH ALL NUMBERS OF B TO A
 void ft_all_b_to_a(t_list **stack_a, t_list **stack_b)
 {
+	if (*stack_b == NULL)
+		return ;
 	while (ft_lstsize(*stack_b) >= 1)
 		pa(stack_a, stack_b);
 }
@@ -59,7 +61,7 @@ void	ft_sort_three(t_list **stack_a)
 }
 
 // Calculate the distance between the head of the node and the node searched
-int		ft_distance(t_list **head, void *content)
+int		ft_lstdistance(t_list **head, void *content)
 {
 	t_list *temporary;
 	int		d;
@@ -74,4 +76,19 @@ int		ft_distance(t_list **head, void *content)
 		temporary = temporary->next;
 	}
 	return (d);
+}
+
+//FIND THE CONTENT IN THE LIST
+t_list	*ft_lstfind(t_list **head, void *content)
+{
+	t_list *temporary;
+
+	temporary = *head;
+	while (temporary != NULL)
+	{
+		if (temporary->content == (void *)content)
+			return (temporary);
+		temporary = temporary->next;
+	}
+	return (NULL);
 }

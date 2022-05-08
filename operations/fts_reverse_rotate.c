@@ -15,6 +15,7 @@
 #include "../includes/push_swap.h"
 
 //REVERSE ROTATE
+// Shift down all elements of stack a by 1
 void	reverse_rotate(t_list **stack)
 {
 	t_list	*tmp;
@@ -31,14 +32,14 @@ void	reverse_rotate(t_list **stack)
 	*stack = tail;
 }
 
-// Shift down all elements of stack a by 1
+//The last element of a becomes the first one.
 void	rra(t_list **stack_a)
 {
 	reverse_rotate(stack_a);
 	write(1, "rra\n", 4);
 }
 
-// Shift down all elements of stack b by 1
+//The last element of b becomes the first one.
 void	rrb(t_list **stack_b)
 {
 	reverse_rotate(stack_b);

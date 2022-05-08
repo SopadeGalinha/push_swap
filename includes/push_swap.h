@@ -83,10 +83,15 @@ void	printlist(t_list *head);
 //ALGORITHMS
 void	ft_sort_three(t_list **stack_a);
 void	ft_sort_four(t_list **stack_a, t_list **stack_b);
+void	ft_sort_five(t_list **stack_a, t_list ** stack_b);
+void	ft_sort_six(t_list **stack_a, t_list ** stack_b);
 
 //ALGORITHMS UTLS
 void ft_all_b_to_a(t_list **stack_a, t_list **stack_b);
 t_list	*ft_lst_beforelast(t_list *lst);
-int		ft_distance(t_list **head, void *content);
+int		ft_lstdistance(t_list **head, void *content);
+t_list	*ft_lstfind(t_list **head, void *content);
+void	ft_reverse_sort_three(t_list **stack_b);
+
 
 #endif
