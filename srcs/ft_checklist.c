@@ -46,24 +46,6 @@ int	ft_reverse_sorted(t_list *lst)
 	return (1);
 }
 
-//COUNT HOW MANY NODES ARE REVERSE SORTED
-int	ft_count_reverse_sorted(t_list **stack)
-{
-	t_list *temporary;
-	int		c;
-
-	temporary = *stack;
-	c = 0;
-	while (temporary->next != NULL)
-	{
-		if (temporary->content < temporary->next->content)
-			break ;
-		temporary = temporary->next;
-		c++;
-	}
-	return (c);
-}
-
 //CHECK FOR DUPLICATES
 int	ft_isduplicate(t_list **lst, t_list *node)
 {
@@ -79,4 +61,31 @@ int	ft_isduplicate(t_list **lst, t_list *node)
 		temporary = temporary->next;
 	}
 	return (0);
+}
+
+//CHECK FOR ERRORS AND INITIALIZE THE STACK A
+t_list	*ft_check_and_init(char **av, int i)
+{
+	t_list		*stack_a;
+	t_list		*node;
+	long int	_atoi;
+
+	_atoi = 0;
+	node = NULL;
+	while (av[++i])
+	{
+		_atoi = ft_atoi_l(av[i]);
+		if (_atoi > 2147483647)
+			exit (write(1, "Error\n", 6));
+		if (!ft_is_digit(av[i]))
+			exit (write(1, "Error\n", 6));
+		node = ft_lstnew((long int *)_atoi);
+		ft_lstadd_back(&stack_a, node);
+		if (ft_isduplicate(&stack_a, node))
+			exit (write(1, "Error\n", 6));
+	}
+	if (!ft_is_sorted(stack_a))
+		exit (write(1, "Error\n", 6));
+	node = stack_a;
+	return (stack_a);
 }

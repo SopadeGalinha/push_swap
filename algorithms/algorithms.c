@@ -12,6 +12,35 @@
 
 #include "../includes/push_swap.h"
 
+//SORT THREE NUMBERS
+void	ft_sort_three(t_list **stack_a)
+{
+	t_list	*node;
+
+	node = *stack_a;
+	if (!ft_is_sorted(*stack_a))
+		return ;
+	if (node->content > node->next->content &&
+		node->next->content > ft_lstlast(*stack_a)->content)
+		{
+			sa(stack_a);
+			rra(stack_a);
+		}
+	else if (node->content > ft_lstlast(*stack_a)->content &&
+		node->content < node->next->content)
+			rra(stack_a);
+	else if (node->content > ft_lstlast(*stack_a)->content &&
+		ft_lstlast(*stack_a)->content > node->next->content)
+			ra(stack_a);
+	else if (node->next->content < node->content && node->content < ft_lstlast(*stack_a)->content)
+		sa(stack_a);
+	else
+	{
+		sa(stack_a);
+		ra(stack_a);
+	}
+}
+
 // SORT WITH FOUR NUMBERS
 void	ft_sort_four(t_list **stack_a, t_list **stack_b)
 {
@@ -45,7 +74,7 @@ void ft_simplesort_b(t_list **stack_b)
 	 	return ;
 }
 
-void	ft_small_to_b_beggining(t_list **stack_a, t_list **stack_b)
+void	ft_sort_up(t_list **stack_a, t_list **stack_b)
 {
 	while(ft_is_sorted(*stack_a))
 	{
@@ -71,7 +100,7 @@ void	ft_small_to_b_beggining(t_list **stack_a, t_list **stack_b)
 	ft_all_b_to_a(stack_a, stack_b);
 }
 
-void	ft_sort_ten(t_list **stack_a, t_list ** stack_b)
+void	ft_sort_numbers(t_list **stack_a, t_list ** stack_b)
 {
 	if (ft_lstsize(*stack_a) == 2)
 		sa(stack_a);
@@ -80,5 +109,5 @@ void	ft_sort_ten(t_list **stack_a, t_list ** stack_b)
 	else if (ft_lstsize(*stack_a) == 4)
 		ft_sort_four(stack_a, stack_b);
 	else
-		ft_small_to_b_beggining(stack_a, stack_b);
+		ft_sort_up(stack_a, stack_b);
 }

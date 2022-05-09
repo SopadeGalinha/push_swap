@@ -25,35 +25,6 @@ void ft_all_b_to_a(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-//SORT THREE NUMBERS
-void	ft_sort_three(t_list **stack_a)
-{
-	t_list	*node;
-
-	node = *stack_a;
-	if (!ft_is_sorted(*stack_a))
-		return ;
-	if (node->content > node->next->content &&
-		node->next->content > ft_lstlast(*stack_a)->content)
-		{
-			sa(stack_a);
-			rra(stack_a);
-		}
-	else if (node->content > ft_lstlast(*stack_a)->content &&
-		node->content < node->next->content)
-			rra(stack_a);
-	else if (node->content > ft_lstlast(*stack_a)->content &&
-		ft_lstlast(*stack_a)->content > node->next->content)
-			ra(stack_a);
-	else if (node->next->content < node->content && node->content < ft_lstlast(*stack_a)->content)
-		sa(stack_a);
-	else
-	{
-		sa(stack_a);
-		ra(stack_a);
-	}
-}
-
 //SORT THREE NUMBERS IN REVERSE ORDER
 void	ft_reverse_sort_three(t_list **stack_b)
 {
@@ -115,4 +86,18 @@ t_list	*ft_biggerst_node(t_list *lst)
 			biggerst = node;
 	}
 	return (biggerst);
+}
+
+//PRINT THE CONTENT OF THE LIST (Integers)
+void	ft_printlist(t_list *head)
+{
+	t_list *temporary;
+	
+	temporary = head;
+	while (temporary != NULL)
+	{
+		printf("%ld -", (long int)temporary->content);
+		temporary = temporary->next;
+	}
+	printf("\n");
 }
