@@ -16,7 +16,8 @@ SRCS = ${wildcard operations/*.c} ${wildcard minilibft/*.c} \
 	 ${wildcard srcs/*.c} ${wildcard algorithms/*.c}
 OBJS = ${SRCS:.c=.o}
 
-CFLAGS	= -Wall -Wextra -Werror -I includes/
+# CFLAGS	= -Wall -Wextra -Werror -I includes/
+CFLAGS	= -I includes/
 
 CL = ar -rcs
 

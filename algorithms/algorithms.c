@@ -66,7 +66,7 @@ void	ft_sort_four(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void ft_simplesort_b(t_list **stack_b)
+void	ft_simplesort_b(t_list **stack_b)
 {
 	if ((*stack_b)->content < (*stack_b)->next->content)
 		sb(stack_b);

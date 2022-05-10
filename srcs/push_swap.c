@@ -38,4 +38,8 @@ int main(int ac, char **av)
 		printf("\nStack B: ");
 		ft_printlist(stack_b);
 	}
+	if (!ft_is_sorted(stack_a))
+		printf("SORTED");
+	else
+		printf("NOT SORTED");
 }

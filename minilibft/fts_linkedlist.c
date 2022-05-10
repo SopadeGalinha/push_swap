@@ -26,6 +26,8 @@ t_list	*ft_lstnew(void *content)
 }
 
 //ADD THE NODE AT THE END OF THE LIST
+// if the list is empty the node 
+// becomes the first node of the list
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*temporary;

@@ -21,6 +21,16 @@ void ft_all_b_to_a(t_list **stack_a, t_list **stack_b)
 	{
 		if ((*stack_a)->content > (*stack_a)->next->content)
 			sa(stack_a);
+		else if ((*stack_b)->content > (*stack_a)->content)
+		{
+			pb(stack_a, stack_b);
+			rb(stack_b);
+		}
+		else if ((*stack_a)->content < (*stack_b)->content)
+		{
+			pb(stack_a, stack_b);
+		}
+		else
 		pa(stack_a, stack_b);
 	}
 }

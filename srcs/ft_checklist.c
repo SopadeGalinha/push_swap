@@ -63,6 +63,8 @@ int	ft_isduplicate(t_list **lst, t_list *node)
 	return (0);
 }
 
+
+// ------------------------------------------------------------
 //CHECK FOR ERRORS AND INITIALIZE THE STACK A
 t_list	*ft_check_and_init(char **av, int i)
 {
