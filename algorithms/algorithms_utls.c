@@ -19,19 +19,24 @@ void ft_all_b_to_a(t_list **stack_a, t_list **stack_b)
 		return ;
 	while (*stack_b)
 	{
-		if ((*stack_a)->content > (*stack_a)->next->content)
+		if (ft_lstsize(*stack_a) == 4)
+			ft_sort_four(stack_a, stack_b);
+		if ((*stack_b)->content == ft_biggerst_node(*stack_b))
+			pa(stack_a, stack_b);
+		else if (ft_lstsize(*stack_b) > 2 && ft_biggerst_node(*stack_b)->content == ft_lstlast(*stack_b)->content)
+			rrb(stack_b);
+		else if ((*stack_a)->content > (*stack_a)->next->content)
 			sa(stack_a);
 		else if ((*stack_b)->content > (*stack_a)->content)
 		{
 			pb(stack_a, stack_b);
 			rb(stack_b);
 		}
-		else if ((*stack_a)->content < (*stack_b)->content)
-		{
-			pb(stack_a, stack_b);
-		}
+		if (ft_lstlast(*stack_b)->content != ft_biggerst_node(*stack_b)->content &&
+			 (*stack_b)->content != ft_biggerst_node(*stack_b)->content)
+				rb(stack_b);
 		else
-		pa(stack_a, stack_b);
+			pa(stack_a, stack_b);	
 	}
 }
 

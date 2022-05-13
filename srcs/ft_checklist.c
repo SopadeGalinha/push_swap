@@ -87,7 +87,7 @@ t_list	*ft_check_and_init(char **av, int i)
 			exit (write(1, "Error\n", 6));
 	}
 	if (!ft_is_sorted(stack_a))
-		exit (write(1, "Error\n", 6));
+		exit (0);
 	node = stack_a;
 	return (stack_a);
 }
