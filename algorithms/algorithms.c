@@ -12,8 +12,23 @@
 
 #include "../includes/push_swap.h"
 
-//SORT THREE NUMBERS
-int		ft_lstdistance(t_list **head, void *content);
+// Calculate the distance between the head of the node and the node searched
+int		ft_lstdistance(t_list **head, void *content)
+{
+	t_list *temporary;
+	int		d;
+
+	d = 0;
+	temporary = *head;
+	while (temporary != NULL)
+	{
+		d++;
+		if (temporary->content == (void *)content)
+			return (d);
+		temporary = temporary->next;
+	}
+	return (d);
+}
 
 // SORT WITH THREE NUMBERS
 void	ft_sort_three(t_list **stack_a)
@@ -109,24 +124,6 @@ void	ft_sort_up(t_list **stack_a, t_list **stack_b);
 
 /*----------------------------------------------------------------*/
 
-
-// Calculate the distance between the head of the node and the node searched
-int		ft_lstdistance(t_list **head, void *content)
-{
-	t_list *temporary;
-	int		d;
-
-	d = 0;
-	temporary = *head;
-	while (temporary != NULL)
-	{
-		d++;
-		if (temporary->content == (void *)content)
-			return (d);
-		temporary = temporary->next;
-	}
-	return (d);
-}
 
 void	ft_with_a(t_list ** stack_a, t_list **stack_b)
 {
