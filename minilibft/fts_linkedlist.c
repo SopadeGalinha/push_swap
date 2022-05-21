@@ -12,22 +12,8 @@
 
 #include "../includes/push_swap.h"
 
-//CREATE A NEW NODE
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*new;
-
-	new = (t_list *)malloc(sizeof(t_list));
-	if (new == NULL)
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
-}
-
 //ADD THE NODE AT THE END OF THE LIST
-// if the list is empty the node 
-// becomes the first node of the list
+// if the list is empty the node becomes the first node of the list
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*temporary;
@@ -44,6 +30,19 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	while (temporary->next)
 		temporary = temporary->next;
 	temporary->next = new;
+}
+
+//CREATE A NEW NODE
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new;
+
+	new = (t_list *)malloc(sizeof(t_list));
+	if (new == NULL)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
 
 //FIND THE LAST NODE

@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//The last element becomes the first one.
+//REVERSE ROTATE FUNCTION
 
 #include "../includes/push_swap.h"
 
-//REVERSE ROTATE
 // Shift down all elements of stack a by 1
 void	reverse_rotate(t_list **stack)
 {

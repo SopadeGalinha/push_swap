@@ -12,6 +12,14 @@
 
 #include "../includes/push_swap.h"
 
+//CHECK IF IS DIGIT
+static int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
 //CHECKS IF THE ARGUMENT CONTAINS ONLY DIGITS
 int	ft_is_digit(char *str)
 {
@@ -27,12 +35,4 @@ int	ft_is_digit(char *str)
 		i++;
 	}
 	return (1);
-}
-
-//CHECK IF IS DIGIT
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
 }

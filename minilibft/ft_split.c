@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-
 /*
 **  Allocates (with malloc(3)) and returns an array of “fresh”
 **  strings (all ending with ’\0’, including the array itself)
@@ -26,8 +24,10 @@ Result:
 ** Param. #2 The delimiter character.
 */
 
+#include "../includes/push_swap.h"
+
 //FT_SPLIT
-size_t	ft_strlen(const char *s);
+static size_t	ft_strlen(const char *s);
 static int	count_words(char const *s, char c);
 static char	*split_word(const char *str, int start, int finish);
 static char	**splitting(char **split, char const *s, char c);
@@ -65,19 +65,6 @@ static int	count_words(char const *s, char c)
 	return (c_words);
 }
 
-static char	*split_word(const char *str, int start, int finish)
-{
-	char	*word;
-	int		i;
-
-	i = 0;
-	word = malloc((finish - start + 1) * sizeof(char));
-	while (start < finish)
-		word[i++] = str[start++];
-	word[i] = '\0';
-	return (word);
-}
-
 static char	**splitting(char **split, char const *s, char c)
 {
 	size_t	i;
@@ -102,7 +89,20 @@ static char	**splitting(char **split, char const *s, char c)
 	return (split);
 }
 
-size_t	ft_strlen(const char *s)
+static char	*split_word(const char *str, int start, int finish)
+{
+	char	*word;
+	int		i;
+
+	i = 0;
+	word = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
+}
+
+static size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 

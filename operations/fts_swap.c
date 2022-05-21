@@ -6,14 +6,14 @@
 /*   By: jhgoncal <jhgoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 12:01:39 by jhgoncal          #+#    #+#             */
-/*   Updated: 2022/04/28 14:57:40 by jhgoncal         ###   ########lyon.fr   */
+/*   Updated: 2022/05/21 00:45:08 by jhgoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-
 //Swap the first 2 elements at the top of stack.
 //Do nothing if there is only one or no elements.
+
+#include "../includes/push_swap.h"
 
 //SWAP FUNCTION
 void	swap(t_list **stack)
@@ -27,6 +27,7 @@ void	swap(t_list **stack)
 	*stack = swap;
 	(*stack)->next = tmp;
 }
+
 // Swap the first 2 elements at the top of stack a.
 void	sa(t_list **stack_a)
 {

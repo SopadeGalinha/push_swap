@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+//ROTATE FUNCTION
 
 #include "../includes/push_swap.h"
-
-//ROTATE FUNCTION
 
 // The first element becomes the last one
 void	rotate(t_list **stack)

@@ -54,36 +54,40 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 
 /*_______________________________FUNCTIONS__________________________________*/
 
-//ERRORS CHECKERS.
-int		ft_isdigit(int c);
-int		ft_is_digit(char *str);
-int		ft_is_sorted(t_list *lst);
-int		ft_isduplicate(t_list **lst, t_list *node);
-
 //MINILIBFT FUNCTIONS
+int			ft_is_digit(char *str);
 long int	ft_atoi_l(const char *str);
+char		**ft_split(char const *s, char c);
 int			ft_lstsize(t_list *lst);
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstnew(void *content);
-char		**ft_split(char const *s, char c);
+t_list		*ft_lst_beforelast(t_list *lst);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 
 //ALGORITHMS
 void	ft_sort_three(t_list **stack_a);
-void	ft_sort_up(t_list **stack_a, t_list **stack_b);
 void	ft_sort_four(t_list **stack_a, t_list **stack_b);
+void	ft_sort_seven(t_list **stack_a, t_list **stack_b);
+void	ft_sort_up(t_list **stack_a, t_list **stack_b);
 void	ft_sort_numbers(t_list **stack_a, t_list ** stack_b);
-void	ft_simplesort_b(t_list **stack_b);
 
-//ALGORITHMS UTLS
-void	ft_all_b_to_a(t_list **stack_a, t_list **stack_b);
-void	ft_reverse_sort_three(t_list **stack_b);
+//ALGORITHMS_UTLS
+void	ft_printlist(t_list *head);//TEMPORARY
 t_list	*ft_smallest_node(t_list *lst);
 t_list	*ft_biggerst_node(t_list *lst);
-void	ft_printlist(t_list *head);
+int		ft_lstdistance(t_list **head, void *content);
+void ft_all_b_to_a(t_list **stack_a, t_list **stack_b);
 
+//ALGORITHMS_REVERSE
 int		ft_reverse_sorted(t_list *lst);
-t_list	*ft_lst_beforelast(t_list *lst);
+void	ft_reverse_sort_three(t_list **stack_b);
+void	ft_reverse_sort_four(t_list **stack_a, t_list **stack_b);
+void	ft_reverse_sort_five(t_list **stack_a, t_list **stack_b);
+
+
+//CHECKERS
 t_list	*ft_check_and_init(char **av, int i);
+int	ft_isduplicate(t_list **lst, t_list *node);
+int	ft_is_sorted(t_list *lst);
 
 #endif

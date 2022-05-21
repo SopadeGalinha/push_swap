@@ -12,59 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-// Return 0 if the list is sorted
-int	ft_is_sorted(t_list *lst)
-{
-	t_list	*temporary;
-	
-	temporary = lst;
-	while (temporary->next != NULL)
-	{
-		if (temporary->content > temporary->next->content)
-			break ;
-		temporary = temporary->next;
-	}
-	if (temporary->next == NULL)
-		return (0);
-	return (1);
-}
-
-//CHECK IF THE LIST IS REVERSE SORTED
-int	ft_reverse_sorted(t_list *lst)
-{
-	t_list	*temporary;
-	
-	temporary = lst;
-	while (temporary->next != NULL)
-	{
-		if (temporary->content < temporary->next->content)
-			break ;
-		temporary = temporary->next;
-	}
-	if (temporary->next == NULL)
-		return (0);
-	return (1);
-}
-
-//CHECK FOR DUPLICATES
-int	ft_isduplicate(t_list **lst, t_list *node)
-{
-	t_list *temporary;
-
-	temporary = *lst;
-	if (*lst == NULL)
-		return (0);
-	while (temporary->next != NULL)
-	{
-		if (temporary->content == node->content)
-			return (1);
-		temporary = temporary->next;
-	}
-	return (0);
-}
-
-
-// ------------------------------------------------------------
 //CHECK FOR ERRORS AND INITIALIZE THE STACK A
 t_list	*ft_check_and_init(char **av, int i)
 {
@@ -90,4 +37,38 @@ t_list	*ft_check_and_init(char **av, int i)
 		exit (0);
 	node = stack_a;
 	return (stack_a);
+}
+
+// Return 0 if the list is sorted
+int	ft_is_sorted(t_list *lst)
+{
+	t_list	*temporary;
+	
+	temporary = lst;
+	while (temporary->next != NULL)
+	{
+		if (temporary->content > temporary->next->content)
+			break ;
+		temporary = temporary->next;
+	}
+	if (temporary->next == NULL)
+		return (0);
+	return (1);
+}
+
+//CHECK FOR DUPLICATES
+int	ft_isduplicate(t_list **lst, t_list *node)
+{
+	t_list *temporary;
+
+	temporary = *lst;
+	if (*lst == NULL)
+		return (0);
+	while (temporary->next != NULL)
+	{
+		if (temporary->content == node->content)
+			return (1);
+		temporary = temporary->next;
+	}
+	return (0);
 }
