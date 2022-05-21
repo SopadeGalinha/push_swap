@@ -16,8 +16,7 @@ SRCS = ${wildcard operations/*.c} ${wildcard minilibft/*.c} \
 	 ${wildcard srcs/*.c} ${wildcard algorithms/*.c}
 OBJS = ${SRCS:.c=.o}
 
-# CFLAGS	= -Wall -Wextra -Werror -I includes/
-CFLAGS	= -I includes/
+CFLAGS	= -Wall -Wextra -Werror -I includes/
 
 CL = ar -rcs
 
@@ -32,6 +31,7 @@ clean:
 
 fclean:	clean
 	${RM}	${NAME}
+	${RM}	*.a
 
 re: fclean all
 
